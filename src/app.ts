@@ -191,22 +191,30 @@ export default class AlarmTimer {
 			{
 				caption: ">",
 				rotationDeg: 0,
-				clickHandler: this.startSound
+				//clickHandler:  this.startSound
+				clickHandler: () => {
+					this.countdownTimer?.increment(0);
+				}
 			}, {
 				caption: "=",
 				rotationDeg: 90,
-				clickHandler: this.stopSound
+				//clickHandler: this.stopSound
+				clickHandler: () => {
+					this.countdownTimer?.pause();
+				}
 			}, {
 				caption:  "^",
 				rotationDeg: 0,
 				clickHandler: () => {
-					this.soundPlaying.changeVolume(this.volumeIncrementPercent);
+					//this.soundPlaying.changeVolume(this.volumeIncrementPercent);
+					this.countdownTimer?.increment(this.increment);
 				}
 			}, {
 				caption: "^",
 				rotationDeg: 180,
 				clickHandler: () => {
-					this.soundPlaying.changeVolume(-this.volumeIncrementPercent);
+					//this.soundPlaying.changeVolume(-this.volumeIncrementPercent);
+					this.countdownTimer?.increment(-this.increment);
 				}
 			}
 		];
